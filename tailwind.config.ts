@@ -8,38 +8,45 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0A0B0D",
-        "ink-alt": "#14161A",
-        panel: "#1B1E23",
-        line: "#2A2D33",
+        // Single dark background across the whole site
+        ink: "#121212",
+        "ink-alt": "#121212",
+        panel: "#1C1B19",
+        line: "#2E2B27",
 
-        bone: "#F2F2F0",
-        haze: "#8A8F98",
+        obsidian: "#121212",
+        mist: "#181715",
+        blush: "#1C1917",
 
+        // Text
+        bone: "#F3F1EC",
+        haze: "#9A968D",
+        fog: "#9A968D",
+
+        // Accent — vivid victory gold, not brown
         crimson: {
-          DEFAULT: "#E8402C",
-          dim: "#B93122",
-          glow: "#FF5A42",
+          DEFAULT: "#E3A343",
+          dim: "#C88A2E",
         },
+        // Secondary accent — cobalt, for contrast/variety
         steel: {
-          DEFAULT: "#3B6EA5",
-          dim: "#2C557F",
+          DEFAULT: "#5FA8D3",
+          dim: "#4489B0",
         },
+      },
+      boxShadow: {
+        card: "0 2px 16px rgba(0,0,0,0.3)",
       },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],
         body: ["var(--font-body)", "sans-serif"],
-        mono: ["var(--font-mono)", "monospace"],
-      },
-      letterSpacing: {
-        widest: ".22em",
       },
       transitionTimingFunction: {
         decisive: "cubic-bezier(0.16, 1, 0.3, 1)",
       },
       backgroundImage: {
         "grid-pattern":
-          "linear-gradient(to right, rgba(242,242,240,0.045) 1px, transparent 1px), linear-gradient(to bottom, rgba(242,242,240,0.045) 1px, transparent 1px)",
+          "linear-gradient(to right, rgba(243,241,236,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(243,241,236,0.05) 1px, transparent 1px)",
       },
       backgroundSize: {
         grid: "56px 56px",

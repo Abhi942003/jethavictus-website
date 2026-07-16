@@ -31,14 +31,14 @@
   }
 
   :focus-visible {
-    outline: 2px solid #e8402c;
+    outline: 2px solid #a96a5d;
     outline-offset: 3px;
   }
 }
 
 @layer components {
   .eyebrow {
-    @apply font-mono text-xs uppercase tracking-widest text-crimson flex items-center gap-2;
+    @apply text-sm text-crimson font-medium mb-4;
   }
 
   .section {

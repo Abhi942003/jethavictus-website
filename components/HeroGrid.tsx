@@ -2,33 +2,49 @@
 
 import { motion } from "framer-motion";
 
+/**
+ * Distinctive hero signature: slow-pulsing concentric "target" rings
+ * radiating from a fixed point, crossed by a single diagonal accent
+ * line. Reads as "precision / strategic focus" — not a generic soft
+ * gradient blob.
+ */
 export default function HeroGrid() {
+  const rings = [140, 240, 340, 440, 540];
+
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div className="absolute inset-0 bg-grid-pattern bg-grid opacity-60" />
+      <div className="absolute top-1/2 right-[-120px] -translate-y-1/2">
+        {rings.map((r, i) => (
+          <motion.div
+            key={r}
+            initial={{ opacity: 0, scale: 0.85 }}
+            animate={{ opacity: [0.15, 0.3, 0.15], scale: [0.85, 1, 0.85] }}
+            transition={{
+              duration: 6,
+              delay: i * 0.4,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="absolute rounded-full border"
+            style={{
+              width: r,
+              height: r,
+              left: -r / 2,
+              top: -r / 2,
+              borderColor: i % 2 === 0 ? "#E3A343" : "#5FA8D3",
+            }}
+          />
+        ))}
+      </div>
 
-      <motion.div
-        initial={{ y: "-10%" }}
-        animate={{ y: "110%" }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          repeatType: "loop",
-          ease: "linear",
+      {/* single diagonal accent line cutting across the hero */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "linear-gradient(105deg, transparent 48%, rgba(227,163,67,0.06) 49.5%, rgba(227,163,67,0.06) 50.5%, transparent 52%)",
         }}
-        className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-crimson/60 to-transparent"
       />
-
-      {[
-        "top-8 left-6 md:left-10 border-t border-l",
-        "top-8 right-6 md:right-10 border-t border-r",
-        "bottom-8 left-6 md:left-10 border-b border-l",
-        "bottom-8 right-6 md:right-10 border-b border-r",
-      ].map((pos, i) => (
-        <div key={i} className={`absolute w-6 h-6 border-crimson/50 ${pos}`} />
-      ))}
-
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#0A0B0D_85%)]" />
     </div>
   );
 }
