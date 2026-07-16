@@ -132,28 +132,35 @@ export default function Home() {
         </FadeUp>
 
         <div className="divide-y divide-line border-t border-line">
-          {SERVICES.map((s, i) => (
-            <FadeUp key={s.slug} delay={i * 0.03}>
-              <Link
-                href={`/services#${s.slug}`}
-                className="group grid md:grid-cols-[3rem_1fr_auto] items-center gap-4 md:gap-8 py-7"
-              >
-                <span className="text-sm text-haze">{String(i + 1).padStart(2, "0")}</span>
-                <div>
-                  <p className="font-display font-semibold text-lg group-hover:text-crimson transition-colors">
-                    {s.name}
-                  </p>
-                  <p className="mt-1 text-sm text-haze leading-relaxed max-w-xl hidden md:block">
-                    {s.summary}
-                  </p>
-                </div>
-                <ArrowUpRight
-                  size={18}
-                  className="text-haze group-hover:text-crimson group-hover:translate-x-1 group-hover:-translate-y-1 transition-all justify-self-end"
-                />
-              </Link>
-            </FadeUp>
-          ))}
+          {SERVICES.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <FadeUp key={s.slug} delay={i * 0.03}>
+                <Link
+                  href={`/services#${s.slug}`}
+                  className="group grid md:grid-cols-[3rem_1fr_auto] items-center gap-4 md:gap-8 py-7"
+                >
+                  <Icon
+                    size={22}
+                    strokeWidth={1.75}
+                    className="text-crimson group-hover:scale-110 transition-transform"
+                  />
+                  <div>
+                    <p className="font-display font-semibold text-lg group-hover:text-crimson transition-colors">
+                      {s.name}
+                    </p>
+                    <p className="mt-1 text-sm text-haze leading-relaxed max-w-xl hidden md:block">
+                      {s.summary}
+                    </p>
+                  </div>
+                  <ArrowUpRight
+                    size={18}
+                    className="text-haze group-hover:text-crimson group-hover:translate-x-1 group-hover:-translate-y-1 transition-all justify-self-end"
+                  />
+                </Link>
+              </FadeUp>
+            );
+          })}
         </div>
       </section>
 

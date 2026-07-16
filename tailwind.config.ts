@@ -8,7 +8,6 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Single dark background across the whole site
         ink: "#121212",
         "ink-alt": "#121212",
         panel: "#1C1B19",
@@ -18,17 +17,14 @@ const config: Config = {
         mist: "#181715",
         blush: "#1C1917",
 
-        // Text
         bone: "#F3F1EC",
         haze: "#9A968D",
         fog: "#9A968D",
 
-        // Accent — vivid victory gold, not brown
         crimson: {
-          DEFAULT: "#E3A343",
-          dim: "#C88A2E",
+          DEFAULT: "#28527A",
+          dim: "#1F4666",
         },
-        // Secondary accent — cobalt, for contrast/variety
         steel: {
           DEFAULT: "#5FA8D3",
           dim: "#4489B0",
