@@ -16,7 +16,7 @@ import { SERVICES, APPROACH, AUDIENCES } from "@/lib/data";
 export default function Home() {
   return (
     <>
-      <section className="relative min-h-screen flex flex-col justify-center overflow-visible">
+      <section className="relative min-h-screen flex flex-col justify-center overflow-hodden">
         <HeroVideo />
 
         <div className="relative z-10 max-w-content mx-auto px-6 md:px-10 pt-32 pb-20 text-center flex flex-col items-center">
