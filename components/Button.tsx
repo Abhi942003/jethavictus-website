@@ -17,8 +17,8 @@ export default function Button({
 
   const variants = {
     solid: "bg-crimson text-white hover:bg-crimson-dim",
-    outline: "border border-line text-bone hover:border-crimson hover:text-crimson",
-    dark: "bg-bone text-ink hover:bg-bone/90",
+    outline: "border border-line text-bone hover:border-crimson hover:bg-crimson/10",
+    dark: "bg-bone text-white hover:bg-bone/90",
   };
 
   return (

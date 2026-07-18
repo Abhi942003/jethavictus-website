@@ -8,22 +8,24 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#121212",
-        "ink-alt": "#121212",
-        panel: "#1C1B19",
-        line: "#2E2B27",
+        ink: "#FFFFFF",
+        "ink-alt": "#FFFFFF",
+        panel: "#F5F5F3",
+        line: "#E5E5E1",
 
-        obsidian: "#121212",
-        mist: "#181715",
-        blush: "#1C1917",
+        navy: "#0E1A2B",
+        "navy-alt": "16273D",
+        obsidian: "#FFFFFF",
+        mist: "#F5F5F3",
+        blush: "#F5F5F3",
 
-        bone: "#F3F1EC",
-        haze: "#9A968D",
-        fog: "#9A968D",
+        bone: "#121212",
+        haze: "#63645F",
+        fog: "#63645F",
 
         crimson: {
-          DEFAULT: "#28527A",
-          dim: "#1F4666",
+          DEFAULT: "#0EA5E9",
+          dim: "#0B84BC",
         },
         steel: {
           DEFAULT: "#5FA8D3",
@@ -31,7 +33,7 @@ const config: Config = {
         },
       },
       boxShadow: {
-        card: "0 2px 16px rgba(0,0,0,0.3)",
+        card: "0 2px 16px rgba(18,18,18,0.06)",
       },
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],
@@ -42,10 +44,10 @@ const config: Config = {
       },
       backgroundImage: {
         "grid-pattern":
-          "linear-gradient(to right, rgba(243,241,236,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(243,241,236,0.05) 1px, transparent 1px)",
+          "linear-gradient(to right, rgba(18,18,18,0.05) 1px, transparent 1px), linear-gradient(to bottom, rgba(18,18,18,0.05) 1px, transparent 1px)",
       },
       backgroundSize: {
-        grid: "56px 56px",
+        grid: "48px 48px",
       },
       maxWidth: {
         content: "1280px",

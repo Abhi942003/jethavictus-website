@@ -8,15 +8,16 @@ import Label from "@/components/Label";
 import Button from "@/components/Button";
 import FadeUp from "@/components/FadeUp";
 import CountUp from "@/components/CountUp";
-import HeroGrid from "@/components/HeroGrid";
+import HeroVideo from "@/components/HeroVideo";
 import RevealText from "@/components/RevealText";
+import ProcessLine from "@/components/ProcessLine";
 import { SERVICES, APPROACH, AUDIENCES } from "@/lib/data";
 
 export default function Home() {
   return (
     <>
-      <section className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden">
-        <HeroGrid />
+      <section className="relative min-h-screen flex flex-col justify-center overflow-visible">
+        <HeroVideo />
 
         <div className="relative z-10 max-w-content mx-auto px-6 md:px-10 pt-32 pb-20 text-center flex flex-col items-center">
           <motion.div
@@ -24,10 +25,10 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            <Eyebrow>Engineered for Victory</Eyebrow>
+            <Eyebrow light>Engineered for Victory</Eyebrow>
           </motion.div>
 
-          <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl leading-[1.1] max-w-3xl">
+          <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl leading-[1.1] max-w-3xl text-white">
             {["Engineered", "for", "victory.", "Built", "for", "the", "future."].map((word, i) => (
               <span key={i} className="inline-block overflow-hidden align-top">
                 <motion.span
@@ -46,7 +47,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 max-w-xl text-lg text-haze italic border-l border-line pl-4 text-left"
+            className="mt-6 max-w-xl text-lg text-white/60 italic border-l border-white/20 pl-4 text-left"
           >
             &ldquo;We don&apos;t just consult. We conquer complexity.&rdquo;
           </motion.p>
@@ -60,7 +61,11 @@ export default function Home() {
             <Button href="/services" variant="solid">
               Explore services
             </Button>
-            <Button href="/contact" variant="outline">
+            <Button
+              href="/contact"
+              variant="outline"
+              className="!border-white/25 !text-white hover:!border-crimson hover:!text-crimson"
+            >
               Let&apos;s talk
             </Button>
           </motion.div>
@@ -164,25 +169,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* HOW WE WORK — plain numbered list, no ring boxes */}
-      <section className="section hairline">
-        <Label>How we work</Label>
+      {/* HOW WE WORK — dark navy, matching the reference video's process section */}
+      <section className="section hairline bg-navy">
+        <Label light>How we work</Label>
         <RevealText
           as="h2"
           text="A disciplined process, built to feel clear and low-friction."
-          className="font-display font-semibold text-2xl md:text-4xl max-w-2xl"
+          className="font-display font-semibold text-2xl md:text-4xl max-w-2xl text-white"
         />
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10 mt-14">
-          {APPROACH.map((a, i) => (
-            <FadeUp key={a.step} delay={i * 0.08}>
-              <p className="font-display font-bold text-4xl text-crimson/80">
-                {String(i + 1).padStart(2, "0")}
-              </p>
-              <p className="mt-3 font-display font-semibold text-xl">{a.step}</p>
-              <p className="mt-2 text-sm text-haze leading-relaxed">{a.detail}</p>
-            </FadeUp>
-          ))}
+        <div className="mt-14">
+          <ProcessLine steps={APPROACH.length} dark />
+          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10 mt-6">
+            {APPROACH.map((a, i) => (
+              <FadeUp key={a.step} delay={i * 0.08}>
+                <p className="font-display font-bold text-4xl text-crimson/90">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <p className="mt-3 font-display font-semibold text-xl text-white">{a.step}</p>
+                <p className="mt-2 text-sm text-white/60 leading-relaxed">{a.detail}</p>
+              </FadeUp>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -204,16 +212,20 @@ export default function Home() {
           </FadeUp>
 
           <div className="divide-y divide-line border-t border-line">
-            {AUDIENCES.map((a, i) => (
-              <FadeUp key={a.title} delay={i * 0.06}>
-                <div className="py-5">
-                  <p className="font-display font-semibold">{a.title}</p>
-                  <p className="mt-2 text-sm text-haze leading-relaxed">
-                    {a.detail}
-                  </p>
-                </div>
-              </FadeUp>
-            ))}
+            {AUDIENCES.map((a, i) => {
+              const Icon = a.icon;
+              return (
+                <FadeUp key={a.title} delay={i * 0.06}>
+                  <div className="py-5">
+                    <Icon size={20} className="text-crimson mb-2" strokeWidth={1.75} />
+                    <p className="font-display font-semibold">{a.title}</p>
+                    <p className="mt-2 text-sm text-haze leading-relaxed">
+                      {a.detail}
+                    </p>
+                  </div>
+                </FadeUp>
+              );
+            })}
           </div>
         </div>
       </section>
