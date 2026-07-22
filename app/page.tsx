@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
 import Eyebrow from "@/components/Eyebrow";
 import Label from "@/components/Label";
 import Button from "@/components/Button";
@@ -11,66 +9,78 @@ import CountUp from "@/components/CountUp";
 import HeroVideo from "@/components/HeroVideo";
 import RevealText from "@/components/RevealText";
 import ProcessLine from "@/components/ProcessLine";
+import ServicesShowcase from "@/components/ServicesShowcase";
 import { SERVICES, APPROACH, AUDIENCES } from "@/lib/data";
 
 export default function Home() {
   return (
     <>
-      <section className="relative min-h-screen flex flex-col justify-center overflow-hodden">
-        <HeroVideo />
+      <section className="relative h-screen overflow-hidden bg-black">
+  <HeroVideo />
 
-        <div className="relative z-10 max-w-content mx-auto px-6 md:px-10 pt-32 pb-20 text-center flex flex-col items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Eyebrow light>Engineered for Victory</Eyebrow>
-          </motion.div>
+  {/* Dark overlay for better text readability */}
+  <div className="absolute inset-0 bg-black/45 z-10" />
 
-          <h1 className="font-display font-bold text-4xl sm:text-5xl md:text-6xl leading-[1.1] max-w-3xl text-white">
-            {["Engineered", "for", "victory.", "Built", "for", "the", "future."].map((word, i) => (
-              <span key={i} className="inline-block overflow-hidden align-top">
-                <motion.span
-                  initial={{ y: "110%" }}
-                  animate={{ y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.1 + i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-                  className="inline-block"
-                >
-                  {word}&nbsp;
-                </motion.span>
-              </span>
-            ))}
-          </h1>
+  <div className="relative z-20 flex h-full items-center justify-center">
+    <div className="max-w-content mx-auto px-6 md:px-10 text-center flex flex-col items-center">
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <Eyebrow light>Engineered for Victory</Eyebrow>
+      </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.55, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-6 max-w-xl text-lg text-white/60 italic border-l border-white/20 pl-4 text-left"
-          >
-            &ldquo;We don&apos;t just consult. We conquer complexity.&rdquo;
-          </motion.p>
+      <h1 className="mt-6 font-display font-bold text-4xl sm:text-5xl md:text-7xl leading-tight text-white max-w-5xl">
+        {["Engineered", "for", "Victory.", "Built", "for", "the", "Future."].map(
+          (word, i) => (
+            <span key={i} className="inline-block overflow-hidden">
+              <motion.span
+                initial={{ y: "120%" }}
+                animate={{ y: 0 }}
+                transition={{
+                  delay: i * 0.08,
+                  duration: 0.6,
+                }}
+                className="inline-block"
+              >
+                {word}&nbsp;
+              </motion.span>
+            </span>
+          )
+        )}
+      </h1>
 
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.68, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-10 flex flex-wrap justify-center gap-4"
-          >
-            <Button href="/services" variant="solid">
-              Explore services
-            </Button>
-            <Button
-              href="/contact"
-              variant="outline"
-              className="!border-white/25 !text-white hover:!border-crimson hover:!text-crimson"
-            >
-              Let&apos;s talk
-            </Button>
-          </motion.div>
-        </div>
-      </section>
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6 }}
+        className="mt-8 max-w-2xl text-lg md:text-xl text-white/80"
+      >
+        "We don't just consult. We conquer complexity."
+      </motion.p>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8 }}
+        className="mt-10 flex gap-5"
+      >
+        <Button href="/services" variant="solid">
+          Explore Services
+        </Button>
+
+        <Button
+          href="/contact"
+          variant="outline"
+          className="!border-white !text-white hover:!bg-white hover:!text-black"
+        >
+          Let's Talk
+        </Button>
+      </motion.div>
+    </div>
+  </div>
+</section>
 
       {/* ABOUT — plain text on the same dark background, no card/box */}
       <section className="section hairline">
@@ -80,17 +90,27 @@ export default function Home() {
           text="The name Jethavictus, rooted in victory, reflects our belief."
           className="font-display text-2xl md:text-4xl leading-snug max-w-3xl"
         />
-        <div className="grid md:grid-cols-2 gap-10 mt-8">
-          <p className="text-bone/75 leading-relaxed">
-            We don&apos;t offer generic blueprints, we craft
-            precision-engineered solutions that solve your most complex
-            technology challenges head-on.
-          </p>
-          <p className="text-bone/75 leading-relaxed">
-            Senior-level consultants with real domain depth, not junior
-            generalists. Battle-tested methodologies built for high-stakes
-            environments. Delivery measured by your outcomes, not our hours.
-          </p>
+        <div className="grid md:grid-cols-2 gap-10 mt-8 items-center">
+          <div>
+            <p className="text-bone/75 leading-relaxed">
+              We don&apos;t offer generic blueprints, we craft
+              precision-engineered solutions that solve your most complex
+              technology challenges head-on.
+            </p>
+            <p className="mt-4 text-bone/75 leading-relaxed">
+              Senior-level consultants with real domain depth, not junior
+              generalists. Battle-tested methodologies built for high-stakes
+              environments. Delivery measured by your outcomes, not our hours.
+            </p>
+          </div>
+          <div
+            className="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-crimson/15 to-panel"
+            style={{
+              backgroundImage: "url(/about-photo.jpg)",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
         </div>
       </section>
 
@@ -136,37 +156,7 @@ export default function Home() {
           </Button>
         </FadeUp>
 
-        <div className="divide-y divide-line border-t border-line">
-          {SERVICES.map((s, i) => {
-            const Icon = s.icon;
-            return (
-              <FadeUp key={s.slug} delay={i * 0.03}>
-                <Link
-                  href={`/services#${s.slug}`}
-                  className="group grid md:grid-cols-[3rem_1fr_auto] items-center gap-4 md:gap-8 py-7"
-                >
-                  <Icon
-                    size={22}
-                    strokeWidth={1.75}
-                    className="text-crimson group-hover:scale-110 transition-transform"
-                  />
-                  <div>
-                    <p className="font-display font-semibold text-lg group-hover:text-crimson transition-colors">
-                      {s.name}
-                    </p>
-                    <p className="mt-1 text-sm text-haze leading-relaxed max-w-xl hidden md:block">
-                      {s.summary}
-                    </p>
-                  </div>
-                  <ArrowUpRight
-                    size={18}
-                    className="text-haze group-hover:text-crimson group-hover:translate-x-1 group-hover:-translate-y-1 transition-all justify-self-end"
-                  />
-                </Link>
-              </FadeUp>
-            );
-          })}
-        </div>
+        <ServicesShowcase services={SERVICES} />
       </section>
 
       {/* HOW WE WORK — dark navy, matching the reference video's process section */}
