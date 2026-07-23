@@ -7,6 +7,7 @@ import {
   Users,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import Parallax from "@/components/Parallax";
 import Eyebrow from "@/components/Eyebrow";
 import Button from "@/components/Button";
 import FadeUp from "@/components/FadeUp";
@@ -147,18 +148,20 @@ export default function Home() {
     </div>
 
     {/* IMAGE */}
-    <div className="mt-2 mb-0 flex justify-center">
-      <div
-        className="h-[220px] w-full max-w-[420px] rounded-2xl overflow-hidden"
-        style={{
-          backgroundImage: "url(/about-photo.jpg)",
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
-    </div>
+<div className="mt-2 mb-0 flex justify-center">
+  <Parallax strength={40}>
+    <div
+      className="h-[220px] w-full max-w-[420px] rounded-2xl overflow-hidden"
+      style={{
+        backgroundImage: "url(/about-photo.jpg)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    />
+  </Parallax>
+</div>
 
-  </div>
+</div>   {/* close max-w-content div */}
 </section>
 
       {/* STATS — large counted numbers, no boxes */}
@@ -230,14 +233,22 @@ export default function Home() {
           <ProcessLine steps={APPROACH.length} dark />
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10 mt-6">
             {APPROACH.map((a, i) => (
-              <FadeUp key={a.step} delay={i * 0.08}>
-                <p className="font-display font-bold text-4xl text-crimson/90">
-                  {String(i + 1).padStart(2, "0")}
-                </p>
-                <p className="mt-3 font-display font-semibold text-xl text-white">{a.step}</p>
-                <p className="mt-2 text-sm text-white/60 leading-relaxed">{a.detail}</p>
-              </FadeUp>
-            ))}
+  <FadeUp key={a.step} delay={i * 0.08}>
+    <div>
+      <p className="font-display font-bold text-4xl text-crimson/90">
+        {String(i + 1).padStart(2, "0")}
+      </p>
+
+      <p className="mt-3 font-display font-semibold text-xl text-white">
+        {a.step}
+      </p>
+
+      <p className="mt-2 text-sm text-white/60 leading-relaxed">
+        {a.detail}
+      </p>
+    </div>
+  </FadeUp>
+))}
           </div>
         </div>
      </div>
@@ -299,19 +310,36 @@ export default function Home() {
 
           <div className="divide-y divide-line border-t border-line">
             {AUDIENCES.map((a, i) => {
-              const Icon = a.icon;
-              return (
-                <FadeUp key={a.title} delay={i * 0.06}>
-                  <div className="py-5">
-                    <Icon size={20} className="text-crimson mb-2" strokeWidth={1.75} />
-                    <p className="font-display font-semibold">{a.title}</p>
-                    <p className="mt-2 text-sm text-haze leading-relaxed">
-                      {a.detail}
-                    </p>
-                  </div>
-                </FadeUp>
-              );
-            })}
+  const Icon = a.icon;
+
+  return (
+    <FadeUp key={a.title} delay={i * 0.06}>
+      <div className="group relative overflow-hidden py-5 px-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/20">
+
+        {/* Orange hover shade */}
+        <div className="absolute inset-0 bg-[#C96A1B]/15 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+        {/* Content */}
+        <div className="relative z-10">
+          <Icon 
+            size={20} 
+            className="text-crimson mb-2" 
+            strokeWidth={1.75} 
+          />
+
+          <p className="font-display font-semibold">
+            {a.title}
+          </p>
+
+          <p className="mt-2 text-sm text-haze leading-relaxed">
+            {a.detail}
+          </p>
+        </div>
+
+      </div>
+    </FadeUp>
+  );
+})}
           </div>
         </div>
       </section>
