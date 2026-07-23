@@ -48,7 +48,7 @@ export default function ServicesShowcase({
 
   return (
     <div className="grid lg:grid-cols-[42%_58%] gap-20 items-start">
-      <div className="border-t border-line">
+      <div className="border-t border-line h-screen flex flex-col justify-center px-10">
         {services.map((s, i) => (
           <button
             key={s.slug}
@@ -97,7 +97,7 @@ export default function ServicesShowcase({
     animate={{ opacity: 1, scale: 1 }}
     exit={{ opacity: 0, scale: 0.95 }}
     transition={{ duration: 0.5 }}
-    className="relative aspect-[4/5] rounded-2xl overflow-hidden"
+    className="relative w-full h-[550px] overflow-hidden rounded-3xl"
   >
     <AnimatePresence mode="wait">
   <motion.div
@@ -112,8 +112,7 @@ export default function ServicesShowcase({
       src={`/services/${active + 1}.jpg`}
       alt={current.name}
       fill
-      sizes="600px"
-      priority
+      sizes="100vw"
       className="object-cover"
     />
 
@@ -121,40 +120,11 @@ export default function ServicesShowcase({
     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
 
     {/* Text */}
-    <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-      <motion.h3
-        key={`title-${active}`}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
-        transition={{ duration: 0.3 }}
-        className="text-3xl font-bold"
-      >
-        {current.name}
-      </motion.h3>
-
-      <motion.p
-        key={`summary-${active}`}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: 20 }}
-        transition={{ duration: 0.4 }}
-        className="mt-3 text-white/80"
-      >
-        {current.summary}
-      </motion.p>
-
-      <Link
-        href={`/services#${current.slug}`}
-        className="inline-flex items-center gap-2 mt-5 text-white hover:text-red-400"
-      >
-        Learn More <ArrowUpRight size={18} />
-      </Link>
-    </div>
+    ...
   </motion.div>
 </AnimatePresence>
 
-    <div className="absolute inset-0 bg-black/20" />
+    <div className="absolute inset-0 bg-transparent" />
   </motion.div>
 </AnimatePresence>
     </div>
