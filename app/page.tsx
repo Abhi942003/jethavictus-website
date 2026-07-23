@@ -133,7 +133,7 @@ export default function Home() {
       {/* RIGHT SIDE */}
       <div>
         <p className="text-gray-600 leading-relaxed">
-          We don't offer generic blueprints, we craft precision-engineered
+          We don&apos;t offer generic blueprints, we craft precision-engineered
           solutions that solve your most complex technology challenges head-on.
         </p>
 
