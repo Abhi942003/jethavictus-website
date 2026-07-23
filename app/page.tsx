@@ -1,5 +1,12 @@
 "use client";
 
+import {
+  BadgeInfo,
+  BriefcaseBusiness,
+  Workflow,
+  Users,
+  Target,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import Eyebrow from "@/components/Eyebrow";
 import Label from "@/components/Label";
@@ -15,13 +22,13 @@ import { SERVICES, APPROACH, AUDIENCES } from "@/lib/data";
 export default function Home() {
   return (
     <>
-      <section className="relative h-screen overflow-hidden bg-black">
+      <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-navy">
   <HeroVideo />
 
   {/* Dark overlay for better text readability */}
   <div className="absolute inset-0 bg-black/45 z-10" />
 
-  <div className="relative z-20 flex h-full items-center justify-center">
+  <div className="relative z-10 max-w-content mx-auto px-6 md:px-10 pt-32 pb-20 text-center flex flex-col items-center">
     <div className="max-w-content mx-auto px-6 md:px-10 text-center flex flex-col items-center">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
@@ -83,39 +90,81 @@ export default function Home() {
 </section>
 
       {/* ABOUT — plain text on the same dark background, no card/box */}
-      <section className="section hairline">
-        <Label>About us</Label>
+      <section className="pt-16 pb-2 bg-white text-black">
+  <div className="max-w-content mx-auto px-6 md:px-10">
+
+    <div className="grid md:grid-cols-2 gap-6 items-start">
+
+      {/* LEFT SIDE */}
+      <div>
+        <div className="flex items-center gap-2 mb-4">
+          <BadgeInfo size={16} className="text-[#C96A1B]" />
+          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#C96A1B]">
+            About Us
+          </span>
+        </div>
+
+        <h3 className="mb-4 font-display text-4xl md:text-5xl font-bold text-[#C96A1B] leading-tight">
+          {"Built on Trust. Driven by Innovation."
+            .split(" ")
+            .map((word, i) => (
+              <span key={i} className="inline-block overflow-hidden mr-2">
+                <motion.span
+                  className="inline-block"
+                  initial={{ y: "100%", opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    delay: i * 0.08,
+                    duration: 0.6,
+                  }}
+                >
+                  {word}
+                </motion.span>
+              </span>
+            ))}
+        </h3>
+
         <RevealText
           as="h2"
           text="The name Jethavictus, rooted in victory, reflects our belief."
-          className="font-display text-2xl md:text-4xl leading-snug max-w-3xl"
+          className="font-display text-2xl md:text-4xl leading-snug"
         />
-        <div className="grid md:grid-cols-2 gap-10 mt-8 items-center">
-          <div>
-            <p className="text-bone/75 leading-relaxed">
-              We don&apos;t offer generic blueprints, we craft
-              precision-engineered solutions that solve your most complex
-              technology challenges head-on.
-            </p>
-            <p className="mt-4 text-bone/75 leading-relaxed">
-              Senior-level consultants with real domain depth, not junior
-              generalists. Battle-tested methodologies built for high-stakes
-              environments. Delivery measured by your outcomes, not our hours.
-            </p>
-          </div>
-          <div
-            className="aspect-[4/3] rounded-2xl overflow-hidden bg-gradient-to-br from-crimson/15 to-panel"
-            style={{
-              backgroundImage: "url(/about-photo.jpg)",
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          />
-        </div>
-      </section>
+      </div>
+
+      {/* RIGHT SIDE */}
+      <div>
+        <p className="text-gray-600 leading-relaxed">
+          We don't offer generic blueprints, we craft precision-engineered
+          solutions that solve your most complex technology challenges head-on.
+        </p>
+
+        <p className="mt-5 text-gray-600 leading-relaxed">
+          Senior-level consultants with real domain depth, not junior
+          generalists. Battle-tested methodologies built for high-stakes
+          environments. Delivery measured by your outcomes, not our hours.
+        </p>
+      </div>
+
+    </div>
+
+    {/* IMAGE */}
+    <div className="mt-2 mb-0 flex justify-center">
+      <div
+        className="h-[220px] w-full max-w-[420px] rounded-2xl overflow-hidden"
+        style={{
+          backgroundImage: "url(/about-photo.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
+    </div>
+
+  </div>
+</section>
 
       {/* STATS — large counted numbers, no boxes */}
-      <section className="hairline py-16 md:py-20 overflow-hidden">
+      <section className="hairline py-4 md:py-8 overflow-hidden -mt-4">
         <div className="max-w-content mx-auto px-6 md:px-10">
           <div className="flex flex-col md:flex-row md:items-end gap-10 md:gap-0">
             <div className="md:-mr-6 md:translate-y-3">
@@ -141,10 +190,15 @@ export default function Home() {
       </section>
 
       {/* SERVICES — plain divided list, no cards, no icon boxes */}
-      <section className="section hairline">
+      <section className="section bg-white">
         <FadeUp className="flex items-end justify-between flex-wrap gap-6 mb-14">
           <div>
-            <Label>Our services</Label>
+            <div className="flex items-center gap-2 mb-4">
+  <BriefcaseBusiness size={16} className="text-[#C96A1B] shrink-0" />
+  <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#C96A1B]">
+    Our Services
+  </span>
+</div>
             <RevealText
               as="h2"
               text="Practical expertise across seven domains."
@@ -160,8 +214,14 @@ export default function Home() {
       </section>
 
       {/* HOW WE WORK — dark navy, matching the reference video's process section */}
-      <section className="section hairline bg-navy">
-        <Label light>How we work</Label>
+      <section className="bg-navy text-white py-20">
+  <div className="max-w-content mx-auto px-6 md:px-10">
+        <div className="flex items-center gap-2 mb-4">
+  <Workflow size={16} className="text-[#C96A1B] shrink-0" />
+  <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#C96A1B]">
+    How We Work
+  </span>
+</div>
         <RevealText
           as="h2"
           text="A disciplined process, built to feel clear and low-friction."
@@ -182,13 +242,51 @@ export default function Home() {
             ))}
           </div>
         </div>
+     </div>
       </section>
 
+            {/* Our Mission */}
+      <section className="py-8 md:py-10 bg-[#C96A1B]">
+        <div className="max-w-3xl mx-auto px-6 text-center">
+
+          <p className="text-sm uppercase tracking-[0.3em] text-black font-semibold">
+            Our Mission
+          </p>
+
+          <h2 className="mt-4 font-display text-3xl md:text-5xl font-bold leading-tight text-center">
+            {"Turning Ambitious Ideas into Business Impact."
+              .split(" ")
+              .map((word, i) => (
+                <span key={i} className="inline-block overflow-hidden mr-2">
+                  <motion.span
+                    className="inline-block"
+                    initial={{ y: "100%" }}
+                    whileInView={{ y: 0 }}
+                    viewport={{ once: false }}
+                    transition={{
+                      delay: i * 0.08,
+                      duration: 0.6,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
+                  >
+                    {word}
+                  </motion.span>
+                </span>
+              ))}
+          </h2>
+
+        </div>
+      </section>
       {/* WHO WE WORK WITH — plain list, no bordered cards */}
-      <section className="section hairline">
+      <section className="section bg-white">
         <div className="grid md:grid-cols-2 gap-14 items-start">
           <FadeUp>
-            <Label>Who we work with</Label>
+            <div className="flex items-center gap-2 mb-4">
+  <Users size={16} className="text-[#C96A1B] shrink-0" />
+  <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#C96A1B]">
+    Who We Work With
+  </span>
+</div>
             <RevealText
               as="h2"
               text="Organizations that need a partner they can trust."

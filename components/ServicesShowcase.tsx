@@ -2,7 +2,16 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import {
+  ArrowUpRight,
+  BriefcaseBusiness,
+  Brain,
+  CloudCog,
+  ShieldCheck,
+  Building2,
+  Blocks,
+  Cpu,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
@@ -26,6 +35,16 @@ export default function ServicesShowcase({
 }) {
   const [active, setActive] = useState(0);
   const current = services[active];
+  
+  const icons = [
+  BriefcaseBusiness, // Strategic IT Consulting
+  Brain,      // Artificial Intelligence & Machine Learning
+  CloudCog,          // Cloud Architecture & AWS Solutions
+  ShieldCheck,       // Cybersecurity & Risk Management
+  Building2,         // Enterprise ERP Solutions
+  Blocks,            // Blockchain & Emerging Technologies
+  Cpu,               // IoT & Data Science
+];
 
   return (
     <div className="grid lg:grid-cols-[42%_58%] gap-20 items-start">
@@ -42,7 +61,24 @@ export default function ServicesShowcase({
             <span className="text-sm text-haze w-8 shrink-0">
               {String(i + 1).padStart(2, "0")}
             </span>
-            <span className="font-display font-medium text-lg">{s.name}</span>
+            <div className="flex items-center gap-4">
+             {(() => {
+              const Icon = icons[i];
+              return (
+              <Icon
+               size={22}
+                strokeWidth={2}
+                  className={`${
+                    active === i ? "text-crimson" : "text-gray-400"
+                   } transition-colors`}
+                />
+              );
+            })()}
+
+                  <span className="font-display font-medium text-lg">
+                {s.name}
+              </span>
+             </div>
           </button>
         ))}
 

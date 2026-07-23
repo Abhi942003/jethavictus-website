@@ -1,16 +1,28 @@
+import { ReactNode } from "react";
+
+type LabelProps = {
+  children: React.ReactNode;
+  light?: boolean;
+  className?: string;
+  icon?: ReactNode;
+};
+
 export default function Label({
   children,
   light = false,
-}: {
-  children: React.ReactNode;
-  light?: boolean;
-}) {
+  className = "",
+  icon,
+}: LabelProps) {
   return (
     <div
-      className={`flex items-center gap-3 text-sm font-medium tracking-wide mb-4 text-crimson`}
+      className={`mb-4 flex items-center gap-2 ${
+        light ? "text-white/70" : "text-[#C96A1B]"
+      } ${className}`}
     >
-      <span className={`w-5 h-px ${light ? "bg-crimson" : "bg-crimson"}`} />
-      {children}
+      {icon}
+      <span className="text-sm font-semibold uppercase tracking-[0.3em]">
+        {children}
+      </span>
     </div>
   );
 }
