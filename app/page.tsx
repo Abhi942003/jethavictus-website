@@ -5,11 +5,9 @@ import {
   BriefcaseBusiness,
   Workflow,
   Users,
-  Target,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import Eyebrow from "@/components/Eyebrow";
-import Label from "@/components/Label";
 import Button from "@/components/Button";
 import FadeUp from "@/components/FadeUp";
 import CountUp from "@/components/CountUp";
@@ -64,7 +62,7 @@ export default function Home() {
         transition={{ delay: 0.6 }}
         className="mt-8 max-w-2xl text-lg md:text-xl text-white/80"
       >
-        "We don't just consult. We conquer complexity."
+        &ldquo;We don&apos;t just consult. We conquer complexity.&rdquo;
       </motion.p>
 
       <motion.div
@@ -82,7 +80,7 @@ export default function Home() {
           variant="outline"
           className="!border-white !text-white hover:!bg-white hover:!text-black"
         >
-          Let's Talk
+          Let&apos;s Talk
         </Button>
       </motion.div>
     </div>
