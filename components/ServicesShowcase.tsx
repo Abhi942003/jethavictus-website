@@ -2,19 +2,18 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  BriefcaseBusiness,
-  Brain,
-  CloudCog,
-  ShieldCheck,
-  Building2,
-  Blocks,
-  Cpu,
-} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
+/**
+ * Numbered services list paired with a single photo panel that
+ * crossfades + scales to match whichever service is active.
+ *
+ * PHOTOS: each service looks for an image at:
+ *   /public/services/<slug>.jpg
+ * Until a real photo exists at that path, the panel shows a plain
+ * accent-colored gradient instead.
+ */
 export default function ServicesShowcase({
   services,
 }: {
@@ -23,19 +22,9 @@ export default function ServicesShowcase({
   const [active, setActive] = useState(0);
   const current = services[active];
 
-  const icons = [
-    BriefcaseBusiness,
-    Brain,
-    CloudCog,
-    ShieldCheck,
-    Building2,
-    Blocks,
-    Cpu,
-  ];
-
   return (
-    <div className="grid lg:grid-cols-[42%_58%] gap-20 items-center">
-      <div className="border-t border-line h-screen flex flex-col justify-center px-10">
+    <div className="grid md:grid-cols-2 gap-10 items-start">
+      <div className="border-t border-line">
         {services.map((s, i) => (
           <button
             key={s.slug}
@@ -48,23 +37,7 @@ export default function ServicesShowcase({
             <span className="text-sm text-haze w-8 shrink-0">
               {String(i + 1).padStart(2, "0")}
             </span>
-            <div className="flex items-center gap-4">
-              {(() => {
-                const Icon = icons[i];
-                return (
-                  <Icon
-                    size={22}
-                    strokeWidth={2}
-                    className={`${
-                      active === i ? "text-crimson" : "text-gray-400"
-                    } transition-colors`}
-                  />
-                );
-              })()}
-              <span className="font-display font-medium text-lg">
-                {s.name}
-              </span>
-            </div>
+            <span className="font-display font-medium text-lg">{s.name}</span>
           </button>
         ))}
 
@@ -76,58 +49,21 @@ export default function ServicesShowcase({
         </Link>
       </div>
 
-      <div className="relative w-full h-[550px] overflow-hidden rounded-3xl">
+      <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-panel">
         <AnimatePresence mode="wait">
           <motion.div
-            key={active}
-            initial={{ opacity: 0, scale: 1.06 }}
+            key={current.slug}
+            initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.97 }}
-            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="relative w-full max-w-[600px] h-[500px] mx-auto rounded-3xl overflow-hidden"
-          >
-            <Image
-              src={`/services/${active + 1}.jpg`}
-              alt={current.name}
-              fill
-              sizes="100vw"
-              className="object-cover"
-              priority
-            />
-
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-
-            {/* Text */}
-            <div className="absolute bottom-0 left-0 right-0 p-8">
-              <motion.p
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.15, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                className="text-xs font-semibold uppercase tracking-[0.3em] text-crimson mb-3"
-              >
-                {String(active + 1).padStart(2, "0")}
-              </motion.p>
-
-              <motion.h3
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                className="font-display font-semibold text-2xl md:text-3xl text-white leading-tight"
-              >
-                {current.name}
-              </motion.h3>
-
-              <motion.p
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.28, duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
-                className="mt-3 text-sm md:text-base text-white/75 leading-relaxed max-w-md"
-              >
-                {current.summary}
-              </motion.p>
-            </div>
-          </motion.div>
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inset-0 bg-gradient-to-br from-crimson/15 to-panel"
+            style={{
+              backgroundImage: `url(/services/${current.slug}.jpg)`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          />
         </AnimatePresence>
       </div>
     </div>
