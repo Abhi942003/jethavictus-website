@@ -6,7 +6,6 @@ import Eyebrow from "@/components/Eyebrow";
 import Button from "@/components/Button";
 import FadeUp from "@/components/FadeUp";
 import RevealText from "@/components/RevealText";
-import CareerVideo from "@/components/CareerVideo";
 
 const VALUES = [
   {
