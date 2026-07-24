@@ -2,7 +2,6 @@
 
 import { motion } from "framer-motion";
 import { Check } from "lucide-react";
-import Eyebrow from "@/components/Eyebrow";
 import Button from "@/components/Button";
 import FadeUp from "@/components/FadeUp";
 import RevealText from "@/components/RevealText";
