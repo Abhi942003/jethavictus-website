@@ -51,13 +51,20 @@ export default function CareerPage() {
   return (
     <>
       {/* HERO WITH VIDEO BACKGROUND */}
-      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden bg-navy">
-        <CareerVideo />
-        <div className="absolute inset-0 bg-black/55 z-10" />
+      <section className="relative min-h-[80vh] flex flex-col justify-center overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "url(/Career.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/50 z-10" />
 
         <div className="relative z-10 max-w-content mx-auto px-6 md:px-10 text-center flex flex-col items-center">
           <Eyebrow light>Careers at Jethavictus</Eyebrow>
-          <h1 className="mt-6 font-display font-bold text-4xl sm:text-5xl md:text-6xl leading-tight text-white max-w-4xl">
+          <h1 className="mt-6 font-hero font-bold text-4xl sm:text-5xl md:text-6xl leading-tight text-white max-w-4xl">
             {"Join the mission. Build the future."
               .split(" ")
               .map((word, i) => (
@@ -197,3 +204,6 @@ export default function CareerPage() {
     </>
   );
 }
+
+
+

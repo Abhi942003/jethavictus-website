@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
-import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
+﻿import type { Metadata } from "next";
+import { Space_Grotesk, Inter, JetBrains_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -23,6 +23,12 @@ const mono = JetBrains_Mono({
   variable: "--font-mono",
   display: "swap",
 });
+const hero = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-hero",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Jethavictus Solutions | Engineered for Victory. Built for the Future.",
@@ -36,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
+    <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable} ${hero.variable}`}>
       <body>
         <SmoothScroll>
           <Navbar />

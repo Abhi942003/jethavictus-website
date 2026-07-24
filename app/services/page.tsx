@@ -22,12 +22,21 @@ export default function ServicesPage() {
   return (
     <>
       {/* HERO */}
-      <section className="relative bg-navy text-white pt-40 pb-24 overflow-hidden">
-        <div className="max-w-content mx-auto px-6 md:px-10 text-center">
+      <section className="relative text-white pt-40 pb-24 overflow-hidden">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: "url(/services.jpg)",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/20 to-black/50" />
+        <div className="relative z-10 max-w-content mx-auto px-6 md:px-10 text-center">
           <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#C96A1B]">
             Our Services
           </span>
-          <h1 className="mt-6 font-display font-bold text-4xl sm:text-5xl md:text-6xl leading-tight max-w-4xl mx-auto">
+          <h1 className="mt-6 font-hero font-bold text-4xl sm:text-5xl md:text-6xl leading-tight max-w-4xl mx-auto">
             {"Seven domains. One standard of excellence."
               .split(" ")
               .map((word, i) => (
@@ -77,7 +86,7 @@ export default function ServicesPage() {
                     <div
                       className="absolute inset-0"
                       style={{
-                        backgroundImage: `url(/services/${s.slug}.jpg)`,
+                        backgroundImage: `url(/services/${i + 1}.jpg)`,
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                       }}

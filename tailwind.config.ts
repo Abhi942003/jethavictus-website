@@ -1,5 +1,4 @@
-import type { Config } from "tailwindcss";
-
+﻿import type { Config } from "tailwindcss";
 const config: Config = {
   content: [
     "./app/**/*.{ts,tsx}",
@@ -12,17 +11,14 @@ const config: Config = {
         "ink-alt": "#FFFFFF",
         panel: "#F5F5F3",
         line: "#E5E5E1",
-
         navy: "#0E1A2B",
         "navy-alt": "16273D",
         obsidian: "#FFFFFF",
         mist: "#F5F5F3",
         blush: "#F5F5F3",
-
         bone: "#121212",
         haze: "#63645F",
         fog: "#63645F",
-
         crimson: {
           DEFAULT: "#0EA5E9",
           dim: "#0B84BC",
@@ -38,6 +34,7 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-display)", "sans-serif"],
         body: ["var(--font-body)", "sans-serif"],
+        hero: ["var(--font-hero)", "serif"],
       },
       transitionTimingFunction: {
         decisive: "cubic-bezier(0.16, 1, 0.3, 1)",
@@ -56,5 +53,4 @@ const config: Config = {
   },
   plugins: [],
 };
-
 export default config;

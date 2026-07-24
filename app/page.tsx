@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import {
   BadgeInfo,
@@ -7,7 +7,6 @@ import {
   Users,
 } from "lucide-react";
 import { motion } from "framer-motion";
-import Parallax from "@/components/Parallax";
 import Eyebrow from "@/components/Eyebrow";
 import Button from "@/components/Button";
 import FadeUp from "@/components/FadeUp";
@@ -15,154 +14,155 @@ import CountUp from "@/components/CountUp";
 import HeroVideo from "@/components/HeroVideo";
 import RevealText from "@/components/RevealText";
 import ProcessLine from "@/components/ProcessLine";
-import ServicesShowcase from "@/components/ServicesShowcase";
+import ServicesGrid from "@/components/ServicesGrid";
+import Parallax from "@/components/Parallax";
 import { SERVICES, APPROACH, AUDIENCES } from "@/lib/data";
 
 export default function Home() {
   return (
     <>
       <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-navy">
-  <HeroVideo />
+        <HeroVideo />
 
-  {/* Dark overlay for better text readability */}
-  <div className="absolute inset-0 bg-black/45 z-10" />
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/45 z-10" />
 
-  <div className="relative z-10 max-w-content mx-auto px-6 md:px-10 pt-32 pb-20 text-center flex flex-col items-center">
-    <div className="max-w-content mx-auto px-6 md:px-10 text-center flex flex-col items-center">
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        <Eyebrow light>Engineered for Victory</Eyebrow>
-      </motion.div>
+        <div className="relative z-10 max-w-content mx-auto px-6 md:px-10 pt-32 pb-20 text-center flex flex-col items-center">
+          <div className="max-w-content mx-auto px-6 md:px-10 text-center flex flex-col items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <Eyebrow light>Engineered for Victory</Eyebrow>
+            </motion.div>
 
-      <h1 className="mt-6 font-display font-bold text-4xl sm:text-5xl md:text-7xl leading-tight text-white max-w-5xl">
-        {["Engineered", "for", "Victory.", "Built", "for", "the", "Future."].map(
-          (word, i) => (
-            <span key={i} className="inline-block overflow-hidden">
-              <motion.span
-                initial={{ y: "120%" }}
-                animate={{ y: 0 }}
-                transition={{
-                  delay: i * 0.08,
-                  duration: 0.6,
-                }}
-                className="inline-block"
+            <h1 className="mt-6 font-hero font-bold text-4xl sm:text-5xl md:text-7xl leading-tight text-white max-w-5xl">
+              {["Engineered", "for", "Victory.", "Built", "for", "the", "Future."].map(
+                (word, i) => (
+                  <span key={i} className="inline-block overflow-hidden">
+                    <motion.span
+                      initial={{ y: "120%" }}
+                      animate={{ y: 0 }}
+                      transition={{
+                        delay: i * 0.08,
+                        duration: 0.6,
+                      }}
+                      className="inline-block"
+                    >
+                      {word}&nbsp;
+                    </motion.span>
+                  </span>
+                )
+              )}
+            </h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="mt-8 max-w-2xl text-lg md:text-xl text-white/80"
+            >
+              &ldquo;We don&apos;t just consult. We conquer complexity.&rdquo;
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="mt-10 flex gap-5"
+            >
+              <Button href="/services" variant="solid">
+                Explore Services
+              </Button>
+
+              <Button
+                href="/contact"
+                variant="outline"
+                className="!border-white !text-white hover:!bg-white hover:!text-black"
               >
-                {word}&nbsp;
-              </motion.span>
-            </span>
-          )
-        )}
-      </h1>
-
-      <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6 }}
-        className="mt-8 max-w-2xl text-lg md:text-xl text-white/80"
-      >
-        &ldquo;We don&apos;t just consult. We conquer complexity.&rdquo;
-      </motion.p>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8 }}
-        className="mt-10 flex gap-5"
-      >
-        <Button href="/services" variant="solid">
-          Explore Services
-        </Button>
-
-        <Button
-          href="/contact"
-          variant="outline"
-          className="!border-white !text-white hover:!bg-white hover:!text-black"
-        >
-          Let&apos;s Talk
-        </Button>
-      </motion.div>
-    </div>
-  </div>
-</section>
+                Let&apos;s Talk
+              </Button>
+            </motion.div>
+          </div>
+        </div>
+      </section>
 
       {/* ABOUT — plain text on the same dark background, no card/box */}
       <section className="pt-16 pb-2 bg-white text-black">
-  <div className="max-w-content mx-auto px-6 md:px-10">
+        <div className="max-w-content mx-auto px-6 md:px-10">
 
-    <div className="grid md:grid-cols-2 gap-6 items-start">
+          <div className="grid md:grid-cols-2 gap-6 items-start">
 
-      {/* LEFT SIDE */}
-      <div>
-        <div className="flex items-center gap-2 mb-4">
-          <BadgeInfo size={16} className="text-[#C96A1B]" />
-          <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#C96A1B]">
-            About Us
-          </span>
+            {/* LEFT SIDE */}
+            <div>
+              <div className="flex items-center gap-2 mb-4">
+                <BadgeInfo size={16} className="text-[#C96A1B]" />
+                <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#C96A1B]">
+                  About Us
+                </span>
+              </div>
+
+              <h3 className="mb-4 font-hero text-4xl md:text-5xl font-bold text-[#C96A1B] leading-tight">
+                {"Built on Trust. Driven by Innovation."
+                  .split(" ")
+                  .map((word, i) => (
+                    <span key={i} className="inline-block overflow-hidden mr-2">
+                      <motion.span
+                        className="inline-block"
+                        initial={{ y: "100%", opacity: 0 }}
+                        whileInView={{ y: 0, opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          delay: i * 0.08,
+                          duration: 0.6,
+                        }}
+                      >
+                        {word}
+                      </motion.span>
+                    </span>
+                  ))}
+              </h3>
+
+              <RevealText
+                as="h2"
+                text="The name Jethavictus, rooted in victory, reflects our belief."
+                className="font-display text-2xl md:text-4xl leading-snug"
+              />
+            </div>
+
+            {/* RIGHT SIDE */}
+            <div>
+              <p className="text-gray-600 leading-relaxed">
+                We don&apos;t offer generic blueprints, we craft precision-engineered
+                solutions that solve your most complex technology challenges head-on.
+              </p>
+
+              <p className="mt-5 text-gray-600 leading-relaxed">
+                Senior-level consultants with real domain depth, not junior
+                generalists. Battle-tested methodologies built for high-stakes
+                environments. Delivery measured by your outcomes, not our hours.
+              </p>
+            </div>
+
+          </div>
+
+          {/* IMAGE */}
+          <div className="mt-2 mb-0 flex justify-center">
+            <Parallax strength={30}>
+              <div
+                className="h-[220px] w-full max-w-[420px] rounded-2xl overflow-hidden"
+                style={{
+                  backgroundImage: "url(/about-photo.jpg)",
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              />
+            </Parallax>
+          </div>
+
         </div>
-
-        <h3 className="mb-4 font-display text-4xl md:text-5xl font-bold text-[#C96A1B] leading-tight">
-          {"Built on Trust. Driven by Innovation."
-            .split(" ")
-            .map((word, i) => (
-              <span key={i} className="inline-block overflow-hidden mr-2">
-                <motion.span
-                  className="inline-block"
-                  initial={{ y: "100%", opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    delay: i * 0.08,
-                    duration: 0.6,
-                  }}
-                >
-                  {word}
-                </motion.span>
-              </span>
-            ))}
-        </h3>
-
-        <RevealText
-          as="h2"
-          text="The name Jethavictus, rooted in victory, reflects our belief."
-          className="font-display text-2xl md:text-4xl leading-snug"
-        />
-      </div>
-
-      {/* RIGHT SIDE */}
-      <div>
-        <p className="text-gray-600 leading-relaxed">
-          We don&apos;t offer generic blueprints, we craft precision-engineered
-          solutions that solve your most complex technology challenges head-on.
-        </p>
-
-        <p className="mt-5 text-gray-600 leading-relaxed">
-          Senior-level consultants with real domain depth, not junior
-          generalists. Battle-tested methodologies built for high-stakes
-          environments. Delivery measured by your outcomes, not our hours.
-        </p>
-      </div>
-
-    </div>
-
-    {/* IMAGE */}
-<div className="mt-2 mb-0 flex justify-center">
-  <Parallax strength={40}>
-    <div
-      className="h-[220px] w-full max-w-[420px] rounded-2xl overflow-hidden"
-      style={{
-        backgroundImage: "url(/about-photo.jpg)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    />
-  </Parallax>
-</div>
-
-</div>   {/* close max-w-content div */}
-</section>
+      </section>
 
       {/* STATS — large counted numbers, no boxes */}
       <section className="hairline py-4 md:py-8 overflow-hidden -mt-4">
@@ -195,11 +195,11 @@ export default function Home() {
         <FadeUp className="flex items-end justify-between flex-wrap gap-6 mb-14">
           <div>
             <div className="flex items-center gap-2 mb-4">
-  <BriefcaseBusiness size={16} className="text-[#C96A1B] shrink-0" />
-  <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#C96A1B]">
-    Our Services
-  </span>
-</div>
+              <BriefcaseBusiness size={16} className="text-[#C96A1B] shrink-0" />
+              <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#C96A1B]">
+                Our Services
+              </span>
+            </div>
             <RevealText
               as="h2"
               text="Practical expertise across seven domains."
@@ -211,50 +211,42 @@ export default function Home() {
           </Button>
         </FadeUp>
 
-        <ServicesShowcase services={SERVICES} />
+        <ServicesGrid services={SERVICES} />
       </section>
 
       {/* HOW WE WORK — dark navy, matching the reference video's process section */}
       <section className="bg-navy text-white py-20">
-  <div className="max-w-content mx-auto px-6 md:px-10">
-        <div className="flex items-center gap-2 mb-4">
-  <Workflow size={16} className="text-[#C96A1B] shrink-0" />
-  <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#C96A1B]">
-    How We Work
-  </span>
-</div>
-        <RevealText
-          as="h2"
-          text="A disciplined process, built to feel clear and low-friction."
-          className="font-display font-semibold text-2xl md:text-4xl max-w-2xl text-white"
-        />
+        <div className="max-w-content mx-auto px-6 md:px-10">
+          <div className="flex items-center gap-2 mb-4">
+            <Workflow size={16} className="text-[#C96A1B] shrink-0" />
+            <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#C96A1B]">
+              How We Work
+            </span>
+          </div>
+          <RevealText
+            as="h2"
+            text="A disciplined process, built to feel clear and low-friction."
+            className="font-display font-semibold text-2xl md:text-4xl max-w-2xl text-white"
+          />
 
-        <div className="mt-14">
-          <ProcessLine steps={APPROACH.length} dark />
-          <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10 mt-6">
-            {APPROACH.map((a, i) => (
-  <FadeUp key={a.step} delay={i * 0.08}>
-    <div>
-      <p className="font-display font-bold text-4xl text-crimson/90">
-        {String(i + 1).padStart(2, "0")}
-      </p>
-
-      <p className="mt-3 font-display font-semibold text-xl text-white">
-        {a.step}
-      </p>
-
-      <p className="mt-2 text-sm text-white/60 leading-relaxed">
-        {a.detail}
-      </p>
-    </div>
-  </FadeUp>
-))}
+          <div className="mt-14">
+            <ProcessLine steps={APPROACH.length} dark />
+            <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-10 mt-6">
+              {APPROACH.map((a, i) => (
+                <FadeUp key={a.step} delay={i * 0.08}>
+                  <p className="font-display font-bold text-4xl text-crimson/90">
+                    {String(i + 1).padStart(2, "0")}
+                  </p>
+                  <p className="mt-3 font-display font-semibold text-xl text-white">{a.step}</p>
+                  <p className="mt-2 text-sm text-white/60 leading-relaxed">{a.detail}</p>
+                </FadeUp>
+              ))}
+            </div>
           </div>
         </div>
-     </div>
       </section>
 
-            {/* Our Mission */}
+      {/* Our Mission */}
       <section className="py-8 md:py-10 bg-[#C96A1B]">
         <div className="max-w-3xl mx-auto px-6 text-center">
 
@@ -286,16 +278,17 @@ export default function Home() {
 
         </div>
       </section>
+
       {/* WHO WE WORK WITH — plain list, no bordered cards */}
       <section className="section bg-white">
         <div className="grid md:grid-cols-2 gap-14 items-start">
           <FadeUp>
             <div className="flex items-center gap-2 mb-4">
-  <Users size={16} className="text-[#C96A1B] shrink-0" />
-  <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#C96A1B]">
-    Who We Work With
-  </span>
-</div>
+              <Users size={16} className="text-[#C96A1B] shrink-0" />
+              <span className="text-sm font-semibold uppercase tracking-[0.3em] text-[#C96A1B]">
+                Who We Work With
+              </span>
+            </div>
             <RevealText
               as="h2"
               text="Organizations that need a partner they can trust."
@@ -310,36 +303,19 @@ export default function Home() {
 
           <div className="divide-y divide-line border-t border-line">
             {AUDIENCES.map((a, i) => {
-  const Icon = a.icon;
-
-  return (
-    <FadeUp key={a.title} delay={i * 0.06}>
-      <div className="group relative overflow-hidden py-5 px-4 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-orange-500/20">
-
-        {/* Orange hover shade */}
-        <div className="absolute inset-0 bg-[#C96A1B]/15 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-
-        {/* Content */}
-        <div className="relative z-10">
-          <Icon 
-            size={20} 
-            className="text-crimson mb-2" 
-            strokeWidth={1.75} 
-          />
-
-          <p className="font-display font-semibold">
-            {a.title}
-          </p>
-
-          <p className="mt-2 text-sm text-haze leading-relaxed">
-            {a.detail}
-          </p>
-        </div>
-
-      </div>
-    </FadeUp>
-  );
-})}
+              const Icon = a.icon;
+              return (
+                <FadeUp key={a.title} delay={i * 0.06}>
+                  <div className="py-5">
+                    <Icon size={20} className="text-crimson mb-2" strokeWidth={1.75} />
+                    <p className="font-display font-semibold">{a.title}</p>
+                    <p className="mt-2 text-sm text-haze leading-relaxed">
+                      {a.detail}
+                    </p>
+                  </div>
+                </FadeUp>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -366,3 +342,4 @@ export default function Home() {
     </>
   );
 }
+
